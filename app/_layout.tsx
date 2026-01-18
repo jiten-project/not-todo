@@ -69,6 +69,27 @@ export default function RootLayout() {
             presentation: 'modal',
           }}
         />
+        <Stack.Screen
+          name="legal/privacy"
+          options={{
+            title: 'プライバシーポリシー',
+            headerBackTitle: '戻る',
+          }}
+        />
+        <Stack.Screen
+          name="legal/terms"
+          options={{
+            title: '利用規約・免責事項',
+            headerBackTitle: '戻る',
+          }}
+        />
+        <Stack.Screen
+          name="legal/licenses"
+          options={{
+            title: 'オープンソースライセンス',
+            headerBackTitle: '戻る',
+          }}
+        />
       </Stack>
     </>
   );

@@ -169,6 +169,36 @@ export default function SettingsScreen() {
           <Text style={styles.infoValue}>1.0.0</Text>
         </View>
       </Card>
+
+      {/* 法的情報 */}
+      <Text style={styles.sectionTitle}>法的情報</Text>
+      <Card style={styles.card}>
+        <TouchableOpacity
+          style={styles.menuItem}
+          onPress={() => router.push('/legal/privacy')}
+        >
+          <Text style={styles.menuTitle}>プライバシーポリシー</Text>
+          <Text style={styles.menuArrow}>›</Text>
+        </TouchableOpacity>
+      </Card>
+      <Card style={styles.card}>
+        <TouchableOpacity
+          style={styles.menuItem}
+          onPress={() => router.push('/legal/terms')}
+        >
+          <Text style={styles.menuTitle}>利用規約・免責事項</Text>
+          <Text style={styles.menuArrow}>›</Text>
+        </TouchableOpacity>
+      </Card>
+      <Card style={styles.card}>
+        <TouchableOpacity
+          style={styles.menuItem}
+          onPress={() => router.push('/legal/licenses')}
+        >
+          <Text style={styles.menuTitle}>オープンソースライセンス</Text>
+          <Text style={styles.menuArrow}>›</Text>
+        </TouchableOpacity>
+      </Card>
     </ScrollView>
   );
 }

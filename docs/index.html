@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Not Todo - サポートページ</title>
+  <style>
+    :root {
+      --primary: #007AFF;
+      --text-primary: #1a1a1a;
+      --text-secondary: #666;
+      --text-tertiary: #999;
+      --background: #f5f5f5;
+      --surface: #fff;
+      --border: #e0e0e0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--background);
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, var(--primary), #5856D6);
+      color: white;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+
+    .app-icon {
+      width: 120px;
+      height: 120px;
+      background: white;
+      border-radius: 24px;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+
+    main {
+      padding: 40px 0;
+    }
+
+    section {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+
+    section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 16px;
+      color: var(--text-primary);
+    }
+
+    section h3 {
+      font-size: 1.1rem;
+      margin-top: 20px;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    section p {
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    section ul {
+      color: var(--text-secondary);
+      padding-left: 24px;
+      margin-bottom: 12px;
+    }
+
+    section li {
+      margin-bottom: 8px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 16px;
+    }
+
+    .feature-item {
+      text-align: center;
+      padding: 20px;
+      background: var(--background);
+      border-radius: 8px;
+    }
+
+    .feature-item .icon {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .feature-item h4 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .feature-item p {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    .faq-item h4 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .faq-item p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .contact-form {
+      margin-top: 16px;
+    }
+
+    .contact-info {
+      background: var(--background);
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 16px;
+    }
+
+    .contact-info a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--text-tertiary);
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .legal-links {
+      margin-top: 16px;
+    }
+
+    .legal-links a {
+      margin: 0 12px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="app-icon">✗</div>
+    <h1>Not Todo</h1>
+    <p>やらないことを管理して、より良い習慣を</p>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>アプリについて</h2>
+      <p>
+        「Not Todo」は、「やらないこと」を管理するためのシンプルなアプリです。
+        日々の生活で避けたい習慣や行動をリスト化し、違反を記録することで、
+        自己改善をサポートします。
+      </p>
+
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="icon">📝</div>
+          <h4>やらないことリスト</h4>
+          <p>避けたい習慣をカテゴリ別に管理</p>
+        </div>
+        <div class="feature-item">
+          <div class="icon">⚠️</div>
+          <h4>違反記録</h4>
+          <p>つい違反してしまった時も記録</p>
+        </div>
+        <div class="feature-item">
+          <div class="icon">📊</div>
+          <h4>統計機能</h4>
+          <p>傾向を分析して改善に活かす</p>
+        </div>
+        <div class="feature-item">
+          <div class="icon">🔔</div>
+          <h4>リマインダー</h4>
+          <p>定期的に振り返りを促す通知</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>よくある質問</h2>
+
+      <div class="faq-item">
+        <h4>Q: データはどこに保存されますか？</h4>
+        <p>A: すべてのデータはお使いのデバイス内にのみ保存されます。外部サーバーへの送信は行いません。</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Q: データのバックアップはできますか？</h4>
+        <p>A: 現在、アプリ内でのバックアップ機能は提供していません。デバイスの機種変更時はデータが引き継がれませんのでご注意ください。</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Q: 通知が届きません</h4>
+        <p>A: 設定アプリから本アプリの通知を許可しているか確認してください。また、アプリ内の設定でリマインダーが有効になっているか確認してください。</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Q: アプリは無料ですか？</h4>
+        <p>A: はい、すべての機能を無料でご利用いただけます。広告もありません。</p>
+      </div>
+
+      <div class="faq-item">
+        <h4>Q: 対応しているOSは？</h4>
+        <p>A: iOS および Android に対応しています。</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>使い方</h2>
+
+      <h3>1. カテゴリを作成</h3>
+      <p>まず、設定画面から「カテゴリ管理」でカテゴリを作成します。（例：仕事、健康、プライベート）</p>
+
+      <h3>2. やらないことを登録</h3>
+      <p>ホーム画面の「+」ボタンから、やらないことを登録します。期間限定の項目も設定できます。</p>
+
+      <h3>3. 違反を記録</h3>
+      <p>つい違反してしまった時は、詳細画面から「違反を記録」ボタンで記録します。メモも残せます。</p>
+
+      <h3>4. 統計で振り返り</h3>
+      <p>統計画面で違反の傾向を確認し、改善に活かしましょう。</p>
+    </section>
+
+    <section>
+      <h2>お問い合わせ</h2>
+      <p>アプリに関するご質問、不具合の報告、機能のリクエストなどがございましたら、お気軽にお問い合わせください。</p>
+
+      <div class="contact-info">
+        <p><strong>メール:</strong> <a href="mailto:support@example.com">support@example.com</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/yourusername/not-todo" target="_blank">github.com/yourusername/not-todo</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Not Todo. All rights reserved.</p>
+    <div class="legal-links">
+      <a href="privacy.html">プライバシーポリシー</a>
+      <a href="terms.html">利用規約</a>
+    </div>
+  </footer>
+</body>
+</html>
