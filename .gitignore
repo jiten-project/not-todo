@@ -12,7 +12,11 @@ expo-env.d.ts
 /android/
 .kotlin/
 
-# Build artifacts
+# EAS Build
+.eas/
+eas-build-*.json
+
+# Build artifacts & Signing
 *.orig.*
 *.jks
 *.p8
@@ -20,6 +24,15 @@ expo-env.d.ts
 *.key
 *.pem
 *.mobileprovision
+*.keystore
+*.cer
+google-services.json
+GoogleService-Info.plist
+
+# Build outputs
+*.ipa
+*.apk
+*.aab
 
 # Metro
 .metro-health-check*
@@ -28,15 +41,16 @@ expo-env.d.ts
 npm-debug.*
 yarn-debug.*
 yarn-error.*
+*.log
 
 # macOS
 .DS_Store
-*.DS_Store
+**/.DS_Store
 
 # Environment files
 .env
-.env.local
-.env*.local
+.env.*
+!.env.example
 
 # TypeScript
 *.tsbuildinfo
@@ -46,10 +60,17 @@ yarn-error.*
 .vscode/
 *.swp
 *.swo
+*~
 
 # Testing
 coverage/
+.jest/
 
 # Misc
-*.log
 .cache/
+tmp/
+temp/
+
+# Lock files (choose one: keep yarn.lock OR package-lock.json)
+# package-lock.json
+# yarn.lock
