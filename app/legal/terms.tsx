@@ -9,7 +9,7 @@ export default function TermsScreen() {
 
       <Text style={styles.heading}>1. はじめに</Text>
       <Text style={styles.paragraph}>
-        本利用規約（以下、「本規約」）は、「Not Todo」アプリケーション（以下、「本アプリ」）の利用条件を定めるものです。本アプリをご利用いただく前に、本規約をよくお読みください。
+        本利用規約（以下、「本規約」）は、「やらないこと管理」アプリケーション（以下、「本アプリ」）の利用条件を定めるものです。本アプリをご利用いただく前に、本規約をよくお読みください。
       </Text>
 
       <Text style={styles.heading}>2. サービスの説明</Text>

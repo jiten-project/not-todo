@@ -9,7 +9,7 @@ export default function PrivacyPolicyScreen() {
 
       <Text style={styles.heading}>1. はじめに</Text>
       <Text style={styles.paragraph}>
-        「Not Todo」（以下、「本アプリ」）をご利用いただきありがとうございます。本プライバシーポリシーは、本アプリにおける個人情報の取り扱いについて説明します。
+        「やらないこと管理」（以下、「本アプリ」）をご利用いただきありがとうございます。本プライバシーポリシーは、本アプリにおける個人情報の取り扱いについて説明します。
       </Text>
 
       <Text style={styles.heading}>2. 収集する情報</Text>

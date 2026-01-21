@@ -113,3 +113,19 @@ export const getRelativeDate = (dateString: string): string => {
   if (diffDays < 30) return `${Math.floor(diffDays / 7)}週間前`;
   return formatDate(dateString);
 };
+
+// 継続日数を計算（作成日または最後の違反日から）
+export const getStreakDays = (
+  createdAt: string,
+  lastViolationAt?: string
+): number => {
+  const now = startOfDay(new Date());
+  const startDate = lastViolationAt
+    ? startOfDay(parseISO(lastViolationAt))
+    : startOfDay(parseISO(createdAt));
+
+  const diffTime = now.getTime() - startDate.getTime();
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+  return Math.max(0, diffDays);
+};

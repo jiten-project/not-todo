@@ -1,3 +1,37 @@
+import { Dimensions, Platform, PixelRatio } from 'react-native';
+
+// 画面サイズを取得
+const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
+
+// 基準となるiPhoneのサイズ（iPhone 14/15）
+const BASE_WIDTH = 390;
+const BASE_HEIGHT = 844;
+
+// iPadかどうかを判定
+const isTablet = Platform.OS === 'ios' && (SCREEN_WIDTH >= 768 || SCREEN_HEIGHT >= 768);
+
+// スケール係数を計算
+const widthScale = SCREEN_WIDTH / BASE_WIDTH;
+const heightScale = SCREEN_HEIGHT / BASE_HEIGHT;
+const scale = Math.min(widthScale, heightScale);
+
+// iPad用のスケール上限（大きくなりすぎないように）
+const tabletMaxScale = 1.4;
+const effectiveScale = isTablet ? Math.min(scale, tabletMaxScale) : Math.min(scale, 1.2);
+
+// フォントサイズをスケーリングする関数
+export const scaledFontSize = (size: number): number => {
+  const newSize = size * effectiveScale;
+  // ピクセル密度に応じて丸める
+  return Math.round(PixelRatio.roundToNearestPixel(newSize));
+};
+
+// スペーシングをスケーリングする関数
+export const scaledSpacing = (size: number): number => {
+  const newSize = size * effectiveScale;
+  return Math.round(newSize);
+};
+
 export const colors = {
   // ベースカラー
   background: '#FAFAFA',
@@ -38,13 +72,14 @@ export const colors = {
   ],
 };
 
+// スケーリングされたスペーシング（iPadで自動的に大きくなる）
 export const spacing = {
-  xs: 4,
-  sm: 8,
-  md: 16,
-  lg: 24,
-  xl: 32,
-  xxl: 48,
+  xs: scaledSpacing(4),
+  sm: scaledSpacing(8),
+  md: scaledSpacing(16),
+  lg: scaledSpacing(24),
+  xl: scaledSpacing(32),
+  xxl: scaledSpacing(48),
 };
 
 export const borderRadius = {
@@ -55,13 +90,14 @@ export const borderRadius = {
   full: 9999,
 };
 
+// スケーリングされたフォントサイズ（iPadで自動的に大きくなる）
 export const fontSize = {
-  xs: 12,
-  sm: 14,
-  md: 16,
-  lg: 18,
-  xl: 24,
-  xxl: 32,
+  xs: scaledFontSize(12),
+  sm: scaledFontSize(14),
+  md: scaledFontSize(16),
+  lg: scaledFontSize(18),
+  xl: scaledFontSize(24),
+  xxl: scaledFontSize(32),
 };
 
 export const fontWeight = {
@@ -69,4 +105,12 @@ export const fontWeight = {
   medium: '500' as const,
   semibold: '600' as const,
   bold: '700' as const,
+};
+
+// デバイス情報をエクスポート
+export const device = {
+  isTablet,
+  screenWidth: SCREEN_WIDTH,
+  screenHeight: SCREEN_HEIGHT,
+  scale: effectiveScale,
 };

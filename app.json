@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Not Todo",
+    "name": "やらないこと管理",
     "slug": "not-todo",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "nottodo",
@@ -17,7 +17,8 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.jiten0410.nottodo",
       "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
+        "ITSAppUsesNonExemptEncryption": false,
+        "CFBundleDevelopmentRegion": "ja"
       }
     },
     "android": {
