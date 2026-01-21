@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, ViewStyle } from 'react-nativ
 import { NotTodoItemWithCount } from '../types';
 import { Card, Badge } from './ui';
 import { colors, spacing, fontSize, fontWeight, borderRadius } from '../constants/theme';
-import { formatDate, isWithinPeriod } from '../utils/dateUtils';
+import { formatDate, isWithinPeriod, getStreakDays } from '../utils/dateUtils';
 
 interface NotTodoItemProps {
   item: NotTodoItemWithCount;
@@ -18,6 +18,7 @@ export const NotTodoItemComponent: React.FC<NotTodoItemProps> = ({
 }) => {
   const isActive = item.isActive && isWithinPeriod(item.startDate, item.endDate);
   const categoryColor = item.category?.color || colors.textTertiary;
+  const streakDays = getStreakDays(item.createdAt, item.lastViolationAt);
 
   const cardStyle: ViewStyle = {
     ...styles.card,
@@ -34,11 +35,18 @@ export const NotTodoItemComponent: React.FC<NotTodoItemProps> = ({
               {item.title}
             </Text>
           </View>
-          {item.violationCount > 0 && (
-            <TouchableOpacity onPress={onViolationPress} style={styles.violationBadge}>
-              <Text style={styles.violationCount}>{item.violationCount}</Text>
-            </TouchableOpacity>
-          )}
+          <View style={styles.headerRight}>
+            {isActive && (
+              <View style={styles.streakBadge}>
+                <Text style={styles.streakText}>{streakDays}日</Text>
+              </View>
+            )}
+            {item.violationCount > 0 && (
+              <TouchableOpacity onPress={onViolationPress} style={styles.violationBadge}>
+                <Text style={styles.violationCount}>{item.violationCount}</Text>
+              </TouchableOpacity>
+            )}
+          </View>
         </View>
 
         {item.description && (
@@ -97,6 +105,22 @@ const styles = StyleSheet.create({
   },
   inactiveText: {
     color: colors.textSecondary,
+  },
+  headerRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.xs,
+  },
+  streakBadge: {
+    backgroundColor: '#E8F5E9',
+    borderRadius: borderRadius.sm,
+    paddingVertical: 2,
+    paddingHorizontal: spacing.xs,
+  },
+  streakText: {
+    fontSize: fontSize.xs,
+    fontWeight: fontWeight.medium,
+    color: colors.success,
   },
   violationBadge: {
     backgroundColor: colors.accent,

@@ -91,7 +91,7 @@ export default function NewItemScreen() {
       {categories.length === 0 ? (
         <Card style={styles.noCategoryCard}>
           <Text style={styles.noCategoryText}>
-            カテゴリがありません。設定から追加してください。
+            カテゴリがありません
           </Text>
           <Button
             title="カテゴリを追加"
@@ -105,6 +105,7 @@ export default function NewItemScreen() {
           categories={categories}
           selectedId={categoryId}
           onSelect={setCategoryId}
+          onAddCategory={() => router.push('/category/manage')}
         />
       )}
 

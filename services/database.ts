@@ -91,10 +91,11 @@ export const deleteCategory = async (id: string): Promise<void> => {
 // やらないこと操作
 export const getAllNotTodoItems = async (): Promise<NotTodoItemWithCount[]> => {
   const database = await openDatabase();
-  const items = await database.getAllAsync<NotTodoItem & { violationCount: number }>(
+  const items = await database.getAllAsync<NotTodoItem & { violationCount: number; lastViolationAt: string | null }>(
     `SELECT
       n.*,
-      COALESCE(COUNT(v.id), 0) as violationCount
+      COALESCE(COUNT(v.id), 0) as violationCount,
+      MAX(v.occurredAt) as lastViolationAt
     FROM not_todo_items n
     LEFT JOIN violations v ON n.id = v.notTodoId
     GROUP BY n.id
@@ -107,16 +108,18 @@ export const getAllNotTodoItems = async (): Promise<NotTodoItemWithCount[]> => {
   return items.map((item) => ({
     ...item,
     isActive: Boolean(item.isActive),
+    lastViolationAt: item.lastViolationAt || undefined,
     category: categoryMap.get(item.categoryId),
   }));
 };
 
 export const getNotTodoItemById = async (id: string): Promise<NotTodoItemWithCount | null> => {
   const database = await openDatabase();
-  const item = await database.getFirstAsync<NotTodoItem & { violationCount: number }>(
+  const item = await database.getFirstAsync<NotTodoItem & { violationCount: number; lastViolationAt: string | null }>(
     `SELECT
       n.*,
-      COALESCE(COUNT(v.id), 0) as violationCount
+      COALESCE(COUNT(v.id), 0) as violationCount,
+      MAX(v.occurredAt) as lastViolationAt
     FROM not_todo_items n
     LEFT JOIN violations v ON n.id = v.notTodoId
     WHERE n.id = ?
@@ -130,6 +133,7 @@ export const getNotTodoItemById = async (id: string): Promise<NotTodoItemWithCou
   return {
     ...item,
     isActive: Boolean(item.isActive),
+    lastViolationAt: item.lastViolationAt || undefined,
     category: category || undefined,
   };
 };

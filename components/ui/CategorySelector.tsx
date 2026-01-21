@@ -7,12 +7,14 @@ interface CategorySelectorProps {
   categories: Category[];
   selectedId: string;
   onSelect: (id: string) => void;
+  onAddCategory?: () => void;
 }
 
 export const CategorySelector: React.FC<CategorySelectorProps> = ({
   categories,
   selectedId,
   onSelect,
+  onAddCategory,
 }) => {
   return (
     <View style={styles.container}>
@@ -35,6 +37,14 @@ export const CategorySelector: React.FC<CategorySelectorProps> = ({
           </TouchableOpacity>
         );
       })}
+      {onAddCategory && (
+        <TouchableOpacity
+          style={styles.addButton}
+          onPress={onAddCategory}
+        >
+          <Text style={styles.addButtonText}>＋ 追加</Text>
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
@@ -71,5 +81,20 @@ const styles = StyleSheet.create({
   textActive: {
     color: colors.textPrimary,
     fontWeight: fontWeight.medium,
+  },
+  addButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: spacing.xs,
+    paddingHorizontal: spacing.sm,
+    borderRadius: borderRadius.md,
+    borderWidth: 1,
+    borderColor: colors.border,
+    borderStyle: 'dashed',
+    backgroundColor: colors.surface,
+  },
+  addButtonText: {
+    fontSize: fontSize.sm,
+    color: colors.textSecondary,
   },
 });

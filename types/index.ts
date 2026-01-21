@@ -37,6 +37,7 @@ export interface Settings {
 // やらないこと + 違反回数
 export interface NotTodoItemWithCount extends NotTodoItem {
   violationCount: number;
+  lastViolationAt?: string;
   category?: Category;
 }
 
